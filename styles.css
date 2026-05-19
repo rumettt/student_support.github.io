@@ -14,3 +14,8 @@
 .controls{grid-template-columns:minmax(0,1.25fr) minmax(130px,.8fr) minmax(130px,.8fr) auto;align-items:end}.field{min-width:0}.field input,.field select{width:100%;min-width:0}.controls .btn{min-width:140px}
 @media(max-width:900px){.controls{grid-template-columns:1fr 1fr}.controls .btn{width:100%;min-width:0}}
 @media(max-width:520px){.controls{grid-template-columns:1fr}}
+
+/* Keep three top-bar controls and progress rows separated */
+.topbar{display:grid;grid-template-columns:minmax(280px,1fr) auto auto;justify-content:stretch}.search{width:100%;min-width:0}.search input{flex:1 1 auto}.search button{flex:0 0 auto}.req div{flex-wrap:wrap;gap:6px 12px}.req div b{white-space:nowrap}.bar{width:100%;display:block;flex:0 0 100%}
+@media(max-width:700px){.topbar{grid-template-columns:1fr auto}.search{grid-column:1/-1}.theme-toggle{width:auto}.avatar{justify-self:end}}
+@media(max-width:420px){.topbar{grid-template-columns:1fr}.theme-toggle,.avatar{justify-self:stretch;width:100%}.avatar{border-radius:8px}.search{height:auto;min-height:42px;gap:8px;flex-wrap:wrap;padding:8px}.search input{flex-basis:100%}.search button{width:100%}}
