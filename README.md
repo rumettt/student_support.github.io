@@ -1,25 +1,27 @@
 ﻿# Student Academic Advisor System
 
-A working browser-based implementation of an academic advising system.
+A browser-based academic advising system for students.
 
 ## Features
 
+- Student sign up and sign in
+- Local saved student accounts in the browser
+- Student-managed completed course entry
+- Student-managed planned course entry
 - Course recommendation engine
 - Prerequisite checking
-- GPA-based suggestions
+- GPA and projected GPA calculations
 - Degree progress tracking
 - Graduation eligibility prediction
-- Course difficulty estimation
+- Course difficulty and workload estimation
 - Schedule conflict detection
 - Registration and deadline alerts
-- Advisor-style question answering using local student context
+- Advisor-style chat using the student's own course plan
 
 ## Run
 
 Open `index.html` in a browser. No installation is required.
 
-## Project Structure
+## Notes
 
-- `index.html` - app shell
-- `styles.css` - responsive interface styling
-- `app.js` - data models, rule engine, planner, recommendations, and UI rendering
+This version runs fully on GitHub Pages with no backend. Accounts and course data are stored in the browser's local storage for demo purposes.
