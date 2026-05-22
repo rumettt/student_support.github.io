@@ -79,3 +79,23 @@ select{appearance:none;-webkit-appearance:none;padding-right:34px!important;back
 
 /* Layout containment pass */
 .layout{grid-template-columns:260px minmax(0,1fr)}main,.content,.topbar,.grid,.card,.course-manager,.mini-form,.planner,.term{min-width:0;max-width:100%}.two{grid-template-columns:minmax(0,1.05fr) minmax(0,.82fr)}.course-manager{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr))}.mini-form input,.mini-form select,.field input,.field select,.form input{width:100%;min-width:0}.mini-form .btn,.course-manager button{width:100%}.gpa-summary{grid-template-columns:repeat(auto-fit,minmax(130px,1fr))}.sim-head,.sim-row{grid-template-columns:minmax(0,1fr) minmax(64px,.25fr) minmax(120px,.5fr)}.load-bars{overflow-x:visible}.load-card{min-width:0;grid-template-columns:repeat(2,minmax(0,1fr))}.load-cell{min-width:0}.search{max-width:100%}@media(max-width:1350px){.two{grid-template-columns:1fr}.advisor-head{align-items:center}.load-card{grid-template-columns:repeat(4,minmax(0,1fr))}}@media(max-width:760px){.load-card{grid-template-columns:1fr}.sim-row{grid-template-columns:1fr}.sim-head{display:none}}
+
+/* Presentation page views */
+.content[data-view] > *{display:none}
+.content[data-view="dashboard"] > #dashboard{display:flex}
+.content[data-view="dashboard"] > #searchResults:not(.hidden){display:block}
+.content[data-view="dashboard"] > #metrics,
+.content[data-view="dashboard"] > #overview{display:grid}
+.content[data-view="planner"] > #planner,
+.content[data-view="advisor"] > #planner,
+.content[data-view="recommend"] > #recommend,
+.content[data-view="engine"] > #engine{display:grid}
+.content[data-view="eligibility"] > #eligibility{display:block;margin-top:0!important}
+.content[data-view="planner"] #planner,
+.content[data-view="advisor"] #planner{grid-template-columns:1fr}
+.content[data-view="planner"] #advisor{display:none}
+.content[data-view="advisor"] #planner > .card:first-child{display:none}
+.content[data-view="advisor"] #advisor{display:block;max-width:980px}
+.content[data-view="advisor"] .chat{min-height:260px}
+.content[data-view="dashboard"] #overview{margin-top:20px}
+@media(max-width:760px){.content[data-view="advisor"] .chat{min-height:220px}}
