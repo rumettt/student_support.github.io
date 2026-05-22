@@ -109,3 +109,17 @@ select{appearance:none;-webkit-appearance:none;padding-right:34px!important;back
 [data-theme="dark"] .alert-item{background:#2a1d1c;border-color:#6f3a35}
 [data-theme="dark"] .alert-mark{background:#ef8b80;color:#180604}
 @media(max-width:520px){.alert-title{align-items:flex-start}.alert-heading{align-items:flex-start}.alert-mark{margin-top:1px}}
+
+/* GPA forecast feedback */
+.gpa-feedback{display:grid;gap:4px;margin:-2px 0 12px;padding:12px;border:1px solid var(--line);border-radius:8px;background:var(--soft)}
+.gpa-feedback b{font-size:15px}
+.gpa-feedback span{color:var(--muted);font-size:13px;line-height:1.45}
+.gpa-feedback.ok{border-color:#9bdcc4;background:#eefaf5}
+.gpa-feedback.warn{border-color:#efd099;background:#fff8ea}
+.gpa-feedback.risk{border-color:#efb0aa;background:#fff3f1}
+.gpa-feedback.info{border-color:#b7d6ee;background:#f1f8fd}
+[data-theme="dark"] .gpa-feedback{background:#17231f}
+[data-theme="dark"] .gpa-feedback.ok{border-color:#27654f;background:#102820}
+[data-theme="dark"] .gpa-feedback.warn{border-color:#6d4d18;background:#2b2112}
+[data-theme="dark"] .gpa-feedback.risk{border-color:#6f3a35;background:#2a1d1c}
+[data-theme="dark"] .gpa-feedback.info{border-color:#28506f;background:#132535}
