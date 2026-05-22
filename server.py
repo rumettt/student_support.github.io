@@ -1,11 +1,28 @@
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 import json
-
+import re
 
 ROOT = Path(__file__).parent
 DATA_DIR = ROOT / "data"
 DATA_FILE = DATA_DIR / "students.json"
+
+NAME_RE = re.compile(r"^[A-Za-z]+(?: [A-Za-z]+)*$")
+EMAIL_RE = re.compile(r"^(?!\d+@)[a-z0-9._%+-]+@[a-z0-9-]*[a-z][a-z0-9-]*(\.[a-z]{2,})+$", re.I)
+
+
+def password_problem(password):
+    if len(password) < 8:
+        return "Password must be at least 8 characters"
+    if not re.search(r"[A-Z]", password):
+        return "Password must include at least one capital letter"
+    if not re.search(r"[a-z]", password):
+        return "Password must include at least one small letter"
+    if not re.search(r"\d", password):
+        return "Password must include at least one number"
+    if not re.search(r"[^A-Za-z0-9]", password):
+        return "Password must include at least one symbol"
+    return ""
 
 
 def read_students():
@@ -69,6 +86,16 @@ class AdvisorHandler(SimpleHTTPRequestHandler):
         if not email or not password or not name:
             self.send_json(400, {"error": "Name, email, and password are required"})
             return
+        if not NAME_RE.fullmatch(name):
+            self.send_json(400, {"error": "Name must contain letters only, with spaces allowed between names"})
+            return
+        if not EMAIL_RE.fullmatch(email):
+            self.send_json(400, {"error": "Enter a valid email with @ and a provider domain"})
+            return
+        problem = password_problem(password)
+        if problem:
+            self.send_json(400, {"error": problem})
+            return
         students = read_students()
         if email in students:
             self.send_json(409, {"error": "An account already exists for this email"})
@@ -92,6 +119,11 @@ class AdvisorHandler(SimpleHTTPRequestHandler):
         data = self.read_json()
         email = data.get("email", "").strip().lower()
         password = data.get("password", "")
+        email_problem = not EMAIL_RE.fullmatch(email)
+        password_error = password_problem(password)
+        if email_problem or password_error:
+            self.send_json(400, {"error": "Enter a valid email and strong password"})
+            return
         student = read_students().get(email)
         if not student or student.get("password") != password:
             self.send_json(401, {"error": "Email or password is incorrect"})
