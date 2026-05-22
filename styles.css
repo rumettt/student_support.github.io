@@ -123,3 +123,33 @@ select{appearance:none;-webkit-appearance:none;padding-right:34px!important;back
 [data-theme="dark"] .gpa-feedback.warn{border-color:#6d4d18;background:#2b2112}
 [data-theme="dark"] .gpa-feedback.risk{border-color:#6f3a35;background:#2a1d1c}
 [data-theme="dark"] .gpa-feedback.info{border-color:#28506f;background:#132535}
+
+/* Final phone layout fix */
+html,body{max-width:100%;overflow-x:hidden}
+@media(max-width:760px){
+  .layout{display:block;grid-template-columns:1fr!important;width:100%;max-width:100%;overflow-x:hidden}
+  main{width:100%;max-width:100%;overflow-x:hidden}
+  .sidebar{position:static;width:100%;height:auto;padding:12px;background:var(--deep);border-bottom:1px solid #ffffff20}
+  .brand{display:none}
+  .nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;width:100%}
+  .nav button{min-height:38px;padding:0 8px;text-align:center;justify-content:center;font-size:14px;border-radius:8px}
+  .topbar{position:sticky;top:0;z-index:5;width:100%;grid-template-columns:1fr auto auto!important;padding:10px 12px;background:var(--paper);border-bottom:1px solid var(--line)}
+  .search{grid-column:1/-1;width:100%;min-width:0;max-width:100%;height:42px}
+  .search input{min-width:0;font-size:14px;text-overflow:ellipsis}
+  .search button{white-space:nowrap}
+  .content{width:100%;max-width:100%;padding:12px 12px 86px;overflow-x:hidden}
+  .hero{width:100%;min-height:auto;padding:22px 16px;align-items:flex-start}
+  .hero h1{font-size:34px;line-height:1.04;max-width:100%;overflow-wrap:anywhere}
+  .hero p{font-size:15px;line-height:1.45;max-width:100%;overflow-wrap:anywhere}
+  .actions{display:grid;grid-template-columns:1fr;gap:8px;width:100%}
+  .actions .btn,.actions .secondary{width:100%;white-space:normal;min-height:40px;height:auto;padding:8px 10px}
+  .metrics,.two,.planner,.course-manager,.gpa-summary{grid-template-columns:1fr!important}
+  .card,.metric,.term{width:100%;max-width:100%;overflow:hidden}
+  .floating-ai{width:52px;height:52px;right:14px;bottom:14px}
+}
+@media(max-width:420px){
+  .nav button{font-size:13px;min-height:36px}
+  .topbar{grid-template-columns:1fr 1fr!important}
+  .theme-toggle,.mobile-signout{width:100%;justify-self:stretch}
+  .hero h1{font-size:30px}
+}
